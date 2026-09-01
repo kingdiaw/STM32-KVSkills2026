@@ -48,15 +48,11 @@ UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
 uint32_t t0, millis;
-uint16_t highScore = 0, lowScore = 0;
+uint16_t highScore = 0;
 uint8_t LED_Running_Pattern[8] = { 1, 2, 4, 8, 4, 2, 1, 0 };
 uint8_t gameIndicator;
-uint16_t debugValue;
-const uint8_t initLevel = 1;
-uint8_t level;
-uint8_t LED_seq[10];
-uint8_t PB_seq[10];
-uint32_t current_time, timeElapes;
+uint8_t LED_seq[99];
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -73,7 +69,7 @@ void idleMode(void);
 void sysOP(void);
 uint32_t GetEntropy(void);
 uint32_t GetRandom1to3(void);
-uint8_t inputMode(uint8_t level);
+
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -299,7 +295,7 @@ int main(void) {
 				if ((index + 1) > highScore) {
 					highScore = index + 1;
 				}
-				displayINFO(); // Papar semula H=XX
+				multiplexCharNum("H=XX", highScore);
 				HAL_Delay(1000);
 
 				index = 0; // Reset sequence untuk permainan baharu
