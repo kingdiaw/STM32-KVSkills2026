@@ -69,6 +69,7 @@ void idleMode(void);
 void sysOP(void);
 uint32_t GetEntropy(void);
 uint32_t GetRandom1to3(void);
+void threeLEDs(uint8_t x);
 
 /* USER CODE END PFP */
 
